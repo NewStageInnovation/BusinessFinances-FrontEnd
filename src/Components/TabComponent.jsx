@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TabComponentStyle from "../Styles/TabComponent.css";
 
 import { Pane, Tablist, Tab, Paragraph } from "evergreen-ui";
+import EmptyDataComponent from "./EmptyDataComponent";
 
 function TabComponent() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -30,7 +31,7 @@ function TabComponent() {
               key={tab}
               role="tabpanel"
             >
-              <Paragraph>Panel {tab}</Paragraph>
+                <EmptyDataComponent cta_text={tab} />
             </Pane>
           ))}
         </Pane>
