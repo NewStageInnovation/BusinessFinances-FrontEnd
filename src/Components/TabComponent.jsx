@@ -3,10 +3,38 @@ import TabComponentStyle from "../Styles/TabComponent.css";
 
 import { Pane, Tablist, Tab, Paragraph } from "evergreen-ui";
 import EmptyDataComponent from "./EmptyDataComponent";
+import TableDataComponent from "./TableDataComponent";
 
 function TabComponent() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [tabs] = useState(["Gastos", "Ingresos", "Deudas", "Resumen General"]);
+  const [data] = useState([
+    {
+      fecha: "13/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "13/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "04/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "04/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+  ]);
+
   return (
     <div className="tab-component-container">
       <Pane height={"auto"}>
@@ -31,7 +59,11 @@ function TabComponent() {
               key={tab}
               role="tabpanel"
             >
+              {data.length > 0 ? (
+                <TableDataComponent data={data} />
+              ) : (
                 <EmptyDataComponent cta_text={tab} />
+              )}
             </Pane>
           ))}
         </Pane>
