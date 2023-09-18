@@ -9,7 +9,7 @@ function TabComponent() {
   const [tabs] = useState(["Gastos", "Ingresos", "Deudas", "Resumen General"]);
   return (
     <div className="tab-component-container">
-      <Pane height={120}>
+      <Pane height={"auto"}>
         <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
           {tabs.map((tab, index) => (
             <Tab
@@ -22,7 +22,7 @@ function TabComponent() {
             </Tab>
           ))}
         </Tablist>
-        <Pane padding={16} background="tint1" flex="1">
+        <Pane padding={16} background="tint0" flex="1">
           {tabs.map((tab, index) => (
             <Pane
               aria-labelledby={tab}
