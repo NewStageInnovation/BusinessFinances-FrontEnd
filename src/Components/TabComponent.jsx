@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import TabComponentStyle from "../Styles/TabComponent.css";
 
 import { Pane, Tablist, Tab, Paragraph } from "evergreen-ui";
@@ -60,7 +60,10 @@ function TabComponent() {
               role="tabpanel"
             >
               {data.length > 0 ? (
-                <TableDataComponent data={data} />
+                <Fragment>
+                  <TableDataComponent data={data} />
+                  <div className="add-button">Añadir {tab}</div>
+                </Fragment>
               ) : (
                 <EmptyDataComponent cta_text={tab} />
               )}
