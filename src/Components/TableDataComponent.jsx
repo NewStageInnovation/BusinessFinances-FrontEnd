@@ -41,16 +41,24 @@ function TableDataComponent(props) {
           <Table.TextHeaderCell>Concepto</Table.TextHeaderCell>
           <Table.TextHeaderCell>Categoría</Table.TextHeaderCell>
           <Table.TextHeaderCell>Monto</Table.TextHeaderCell>
-          <Table.TextHeaderCell flexBasis={50} flexShrink={0} flexGrow={0} ></Table.TextHeaderCell>
+          <Table.TextHeaderCell
+            flexBasis={50}
+            flexShrink={0}
+            flexGrow={0}
+          ></Table.TextHeaderCell>
         </Table.Head>
         <Table.Body height={240}>
           {data.map((data, index) => (
-            <Table.Row key={index} isSelectable>
+            <Table.Row key={index}>
               <Table.TextCell>{data.fecha}</Table.TextCell>
               <Table.TextCell>{data.concepto}</Table.TextCell>
               <Table.TextCell>{data.categoria}</Table.TextCell>
               <Table.TextCell isNumber>{data.monto}</Table.TextCell>
-              <Table.TextCell flexBasis={50} flexShrink={0} flexGrow={0}><AiOutlineEdit /></Table.TextCell>
+              <Table.TextCell flexBasis={50} flexShrink={0} flexGrow={0}>
+                <div className="edit-button" onClick={()=>{console.log("Se clickeo el edit: ", data);}}>
+                  <AiOutlineEdit />
+                </div>
+              </Table.TextCell>
             </Table.Row>
           ))}
         </Table.Body>
