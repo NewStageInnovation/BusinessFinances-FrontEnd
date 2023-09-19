@@ -4,6 +4,7 @@ import TabComponentStyle from "../Styles/TabComponent.css";
 import { Pane, Tablist, Tab, Paragraph } from "evergreen-ui";
 import EmptyDataComponent from "./EmptyDataComponent";
 import TableDataComponent from "./TableDataComponent";
+import NewRegisterComponent from "./NewRegisterComponent";
 
 function TabComponent() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -34,6 +35,11 @@ function TabComponent() {
       monto: 1000,
     },
   ]);
+  const [añadirFlag, setAñadirFlag] = useState(false);
+
+  const handleAñadirButton = () => {
+    setAñadirFlag(!añadirFlag);
+  };
 
   return (
     <div className="tab-component-container">
@@ -62,7 +68,14 @@ function TabComponent() {
               {data.length > 0 ? (
                 <Fragment>
                   <TableDataComponent data={data} />
-                  <div className="add-button">Añadir {tab}</div>
+                  {
+                    añadirFlag ? (
+                      <NewRegisterComponent type={tab.toLocaleLowerCase()} />
+                    ) : (
+                      <Fragment />
+                    )
+                  }
+                  <div className="add-button" onClick={handleAñadirButton}>Añadir {tab}</div>
                 </Fragment>
               ) : (
                 <EmptyDataComponent cta_text={tab} />
