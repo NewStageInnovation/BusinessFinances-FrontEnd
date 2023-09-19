@@ -38,8 +38,17 @@ function TabComponent() {
   const [añadirFlag, setAñadirFlag] = useState(false);
 
   const handleAñadirButton = () => {
-    setAñadirFlag(!añadirFlag);
+    setAñadirFlag(true);
   };
+
+  const handleCancelButton = () => {
+    setAñadirFlag(false);
+  }
+
+  const handleSaveButton = () => {
+    // TODO: Implementar el envio del formulario
+    setAñadirFlag(false);
+  }
 
   return (
     <div className="tab-component-container">
@@ -68,14 +77,21 @@ function TabComponent() {
               {data.length > 0 ? (
                 <Fragment>
                   <TableDataComponent data={data} />
-                  {
-                    añadirFlag ? (
+                  {añadirFlag ? (
+                    <Fragment>
                       <NewRegisterComponent type={tab.toLocaleLowerCase()} />
-                    ) : (
-                      <Fragment />
-                    )
-                  }
-                  <div className="add-button" onClick={handleAñadirButton}>Añadir {tab}</div>
+                      <div className="new-register-buttons">
+                        <div className="add-button" onClick={handleSaveButton}>Guardar</div>
+                        <div className="cancel-button" onClick={handleCancelButton}>Cancelar</div>
+                      </div>
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      <div className="add-button" onClick={handleAñadirButton}>
+                        Añadir {tab}
+                      </div>
+                    </Fragment>
+                  )}
                 </Fragment>
               ) : (
                 <EmptyDataComponent cta_text={tab} />
