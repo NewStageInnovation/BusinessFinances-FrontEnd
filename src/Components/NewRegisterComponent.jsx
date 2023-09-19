@@ -4,10 +4,12 @@ import NewRegisterStyle from "../Styles/NewRegisterStyle.css";
 import { TextInputField } from "evergreen-ui";
 
 function NewRegisterComponent(props) {
-  const { type } = props;
-  return (
-    <div className="new-register-container">
-      {type === "gastos" ? (
+  const { type, handleCancelButton, handleSaveButton } = props;
+  let component = <Fragment></Fragment>;
+
+  switch (type) {
+    case "gastos":
+      component = (
         <Fragment>
           <TextInputField
             isInvalid={false}
@@ -38,7 +40,10 @@ function NewRegisterComponent(props) {
             validationMessage="This field is required"
           />
         </Fragment>
-      ) : type === "ingresos" ? (
+      );
+      break;
+    case "ingresos":
+      component = (
         <Fragment>
           <TextInputField
             isInvalid={false}
@@ -69,49 +74,53 @@ function NewRegisterComponent(props) {
             validationMessage="This field is required"
           />
         </Fragment>
-      ) : type === "deudas" ? (
-        <Fragment>
-          <TextInputField
-            isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
-          />
-          <TextInputField
-            isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
-          />
-          <TextInputField
-            isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
-          />
-          <TextInputField
-            isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
-          />
-          <TextInputField
-            isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
-          />
-        </Fragment>
-      ) : (
-        <Fragment></Fragment>
-      )}
-    </div>
-  );
+      );
+      break;
+    case "deudas":
+      <Fragment>
+        <TextInputField
+          isInvalid={false}
+          required
+          label="A required text input field"
+          description="This is a description."
+          validationMessage="This field is required"
+        />
+        <TextInputField
+          isInvalid={false}
+          required
+          label="A required text input field"
+          description="This is a description."
+          validationMessage="This field is required"
+        />
+        <TextInputField
+          isInvalid={false}
+          required
+          label="A required text input field"
+          description="This is a description."
+          validationMessage="This field is required"
+        />
+        <TextInputField
+          isInvalid={false}
+          required
+          label="A required text input field"
+          description="This is a description."
+          validationMessage="This field is required"
+        />
+        <TextInputField
+          isInvalid={false}
+          required
+          label="A required text input field"
+          description="This is a description."
+          validationMessage="This field is required"
+        />
+      </Fragment>;
+      break;
+    default:
+      component = <Fragment></Fragment>;
+      break;
+  }
+
+  return <div className="new-register-container">{component}</div>;
 }
 
 export default NewRegisterComponent;

@@ -1,14 +1,11 @@
 import './App.css';
-import TabComponent from './Components/TabComponent';
-
-import AyudaInformativaComponent from './Components/AyudaInformativaComponent';
+import FormPage from './Pages/FormPage';
 
 function App() {
   return (
     <div className="App">
       <h1>FinanceSimplicity</h1>
-      <TabComponent />
-      <AyudaInformativaComponent />
+      <FormPage />
     </div>
   );
 }

@@ -1,8 +1,11 @@
-.tab-component-container{
-    width: 80vw;
-    text-align: left;
-    margin: auto;
+.new-register-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 20%;
 }
+
 
 .add-button {
     background-color: black;
