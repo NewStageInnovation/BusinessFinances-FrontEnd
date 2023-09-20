@@ -36,7 +36,7 @@ function AyudaInformativaComponent(props) {
             {data || exampleData()}
           </Pane>
         </Dialog>
-        <div onClick={() => setIsShown(true)} style={{ cursor: "pointer" }}>
+        <div className="ayuda-informativa-main-button" onClick={() => setIsShown(true)} style={{ cursor: "pointer" }}>
           <CiCircleInfo />
         </div>
       </Pane>

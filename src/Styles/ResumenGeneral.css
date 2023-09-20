@@ -1,0 +1,66 @@
+.resumen-general-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    width: 80vw;
+    height: auto;
+}
+
+.resumen-general-main-container > .resumen-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.resumen-general-main-container .resumen-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    gap: 8px;
+} 
+
+.resumen-general-main-container .resumen-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid #000000;
+}
+
+.resumen-general-main-container .resumen-title > div {
+    max-width: max-content;
+}
+
+.resumen-general-main-container > .valores-clave-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 65%;
+}
+
+.resumen-general-main-container > .valores-clave-container div {
+    width: 100%;
+    padding: 0px 4px;
+}
+
+.resumen-general-main-container > .valores-clave-container  .resumen-table-title {
+   display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+    text-align: left;
+}
