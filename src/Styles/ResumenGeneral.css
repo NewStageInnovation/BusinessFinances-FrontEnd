@@ -11,7 +11,7 @@
 .resumen-general-main-container > .resumen-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
 }

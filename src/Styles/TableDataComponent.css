@@ -1,6 +1,6 @@
 /* Hacer que el tamaño del contenedor sea del 100% y que lo que se pase de eso se ponga en un scroll en x*/
 .table-data-container{
-    min-width: 500px;
+    min-width: 350px;
     width: 100%;
     height: 100%;
     overflow-x: auto;

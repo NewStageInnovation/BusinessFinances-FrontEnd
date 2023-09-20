@@ -1,43 +1,34 @@
 import React, { Fragment, useState } from "react";
 import NewRegisterStyle from "../Styles/NewRegisterStyle.css";
+import AyudaInformativaComponent from "./AyudaInformativaComponent";
 
 import { TextInputField } from "evergreen-ui";
 
 function NewRegisterComponent(props) {
   const { type, handleCancelButton, handleSaveButton } = props;
   let component = <Fragment></Fragment>;
-
   switch (type) {
     case "gastos":
       component = (
         <Fragment>
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="date"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Fecha</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="text"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Concepto</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Categoría</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="number"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Cantidad</div>}
           />
         </Fragment>
       );
@@ -47,73 +38,56 @@ function NewRegisterComponent(props) {
         <Fragment>
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="date"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Fecha</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="text"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Concepto</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Categoría</div>}
           />
           <TextInputField
             isInvalid={false}
-            required
-            label="A required text input field"
-            description="This is a description."
-            validationMessage="This field is required"
+            type="number"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Cantidad</div>}
           />
         </Fragment>
       );
       break;
     case "deudas":
-      <Fragment>
-        <TextInputField
-          isInvalid={false}
-          required
-          label="A required text input field"
-          description="This is a description."
-          validationMessage="This field is required"
-        />
-        <TextInputField
-          isInvalid={false}
-          required
-          label="A required text input field"
-          description="This is a description."
-          validationMessage="This field is required"
-        />
-        <TextInputField
-          isInvalid={false}
-          required
-          label="A required text input field"
-          description="This is a description."
-          validationMessage="This field is required"
-        />
-        <TextInputField
-          isInvalid={false}
-          required
-          label="A required text input field"
-          description="This is a description."
-          validationMessage="This field is required"
-        />
-        <TextInputField
-          isInvalid={false}
-          required
-          label="A required text input field"
-          description="This is a description."
-          validationMessage="This field is required"
-        />
-      </Fragment>;
+      component = (
+        <Fragment>
+          <TextInputField
+            isInvalid={false}
+            type="date"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Fecha inicio</div>}
+          />
+          <TextInputField
+            isInvalid={false}
+            type="number"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Plazos</div>}
+          />
+          <TextInputField
+            isInvalid={false}
+            type="number"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Monto</div>}
+          />
+          <TextInputField
+            isInvalid={false}
+            type="text"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Entidad</div>}
+          />
+          <TextInputField
+            isInvalid={false}
+            type="number"
+            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Interés</div>}
+          />
+        </Fragment>
+      );
       break;
     default:
       component = <Fragment></Fragment>;
