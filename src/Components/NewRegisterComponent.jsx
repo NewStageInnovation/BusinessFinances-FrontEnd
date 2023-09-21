@@ -4,6 +4,7 @@ import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import FechaAyudaInformativa from "./FechaAyudaInformativa";
 import ConceptoAyudaInformativa from "./ConceptoAyudaInformativa";
 import CategoriaAyudaInformativa from "./CategoriaAyudaInformativa";
+import MontoAyudaInformativa from "./MontoAyudaInformativa";
 
 import { TextInputField } from "evergreen-ui";
 
@@ -31,7 +32,7 @@ function NewRegisterComponent(props) {
           <TextInputField
             isInvalid={false}
             type="number"
-            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Cantidad</div>}
+            label= {<div className="new-register-title"> <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia del registro de monto"} /> Monto</div>}
           />
         </Fragment>
       );
