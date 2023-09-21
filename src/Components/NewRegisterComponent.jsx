@@ -3,6 +3,7 @@ import NewRegisterStyle from "../Styles/NewRegisterStyle.css";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import FechaAyudaInformativa from "./FechaAyudaInformativa";
 import ConceptoAyudaInformativa from "./ConceptoAyudaInformativa";
+import CategoriaAyudaInformativa from "./CategoriaAyudaInformativa";
 
 import { TextInputField } from "evergreen-ui";
 
@@ -25,7 +26,7 @@ function NewRegisterComponent(props) {
           />
           <TextInputField
             isInvalid={false}
-            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Categoría</div>}
+            label= {<div className="new-register-title"> <AyudaInformativaComponent data={<CategoriaAyudaInformativa/>} title={"Gastos Activos vs Gastos Pasivos"} /> Categoría</div>}
           />
           <TextInputField
             isInvalid={false}
