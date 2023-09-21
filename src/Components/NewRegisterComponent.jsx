@@ -6,6 +6,7 @@ import ConceptoAyudaInformativa from "./ConceptoAyudaInformativa";
 import CategoriaAyudaInformativa from "./CategoriaAyudaInformativa";
 import CategoriaIngresosAyudaInformativa from "./CategoriaIngresosAyudaInformativa";
 import MontoAyudaInformativa from "./MontoAyudaInformativa";
+import FechaInicioDeuda from "./FechaInicioDeuda";
 
 import { TextInputField } from "evergreen-ui";
 import { SelectField, option } from "evergreen-ui";
@@ -157,7 +158,7 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Fecha inicio
+                <AyudaInformativaComponent data={<FechaInicioDeuda/>} title={"Importancia de la fecha de inicio"} /> Fecha inicio
               </div>
             }
           />
