@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import NewRegisterStyle from "../Styles/NewRegisterStyle.css";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import FechaAyudaInformativa from "./FechaAyudaInformativa";
+import ConceptoAyudaInformativa from "./ConceptoAyudaInformativa";
 
 import { TextInputField } from "evergreen-ui";
 
@@ -20,7 +21,7 @@ function NewRegisterComponent(props) {
           <TextInputField
             isInvalid={false}
             type="text"
-            label= {<div className="new-register-title"> <AyudaInformativaComponent /> Concepto</div>}
+            label= {<div className="new-register-title"> <AyudaInformativaComponent data={<ConceptoAyudaInformativa/>} title={"Importancia del concepto en registros financieros"} /> Concepto</div>}
           />
           <TextInputField
             isInvalid={false}
