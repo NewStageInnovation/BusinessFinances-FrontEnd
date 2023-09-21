@@ -4,6 +4,7 @@ import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import FechaAyudaInformativa from "./FechaAyudaInformativa";
 import ConceptoAyudaInformativa from "./ConceptoAyudaInformativa";
 import CategoriaAyudaInformativa from "./CategoriaAyudaInformativa";
+import CategoriaIngresosAyudaInformativa from "./CategoriaIngresosAyudaInformativa";
 import MontoAyudaInformativa from "./MontoAyudaInformativa";
 
 import { TextInputField } from "evergreen-ui";
@@ -89,7 +90,11 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Fecha
+                <AyudaInformativaComponent
+                  data={<FechaAyudaInformativa />}
+                  title={"Importancia de la fecha en registros financieros"}
+                />{" "}
+                Fecha
               </div>
             }
           />
@@ -99,26 +104,44 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Concepto
+                <AyudaInformativaComponent
+                  data={<ConceptoAyudaInformativa />}
+                  title={"Importancia del concepto en registros financieros"}
+                />{" "}
+                Concepto
               </div>
             }
           />
-          <TextInputField
+          <SelectField
             isInvalid={false}
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Categoría
+                <AyudaInformativaComponent
+                  data={<CategoriaIngresosAyudaInformativa />}
+                  title={"Ingresos Activos vs Ingresos Pasivos"}
+                />{" "}
+                Categoría
               </div>
             }
-          />
+            width={"150px"}
+          >
+            <option value="activo" selected>
+              Pasivo
+            </option>
+            <option value="pasivo">Activo</option>
+          </SelectField>
           <TextInputField
             isInvalid={false}
             type="number"
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Cantidad
+                <AyudaInformativaComponent
+                  data={<MontoAyudaInformativa />}
+                  title={"Importancia del registro de monto"}
+                />{" "}
+                Monto
               </div>
             }
           />
