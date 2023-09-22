@@ -2,6 +2,7 @@ import React from "react";
 import ResumenGeneralStyle from "../Styles/ResumenGeneral.css";
 import TableDataComponent from "./TableDataComponent";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
+import PatrimonioNetoComponent from "./PatrimonioNetoComponent";
 import { Table } from "evergreen-ui";
 
 function ResumenGeneral() {
@@ -53,7 +54,7 @@ function ResumenGeneral() {
               <Table.Row>
                 <Table.TextCell>
                   <div className="resumen-table-title">
-                    <AyudaInformativaComponent /> Patrimonio Neto:
+                    <AyudaInformativaComponent data={<PatrimonioNetoComponent/>} title={"Patrimonio Neto"} /> Patrimonio Neto:
                   </div>
                 </Table.TextCell>
                 <Table.TextCell>2000</Table.TextCell>
