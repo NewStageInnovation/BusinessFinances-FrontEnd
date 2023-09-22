@@ -9,6 +9,7 @@ import MontoAyudaInformativa from "./MontoAyudaInformativa";
 import FechaInicioDeuda from "./FechaInicioDeuda";
 import PlazosComponent from "./PlazosComponent";
 import EntidadComponent from "./EntidadComponent";
+import InteresComponent from "./InteresComponent";
 
 import { TextInputField } from "evergreen-ui";
 import { SelectField, option } from "evergreen-ui";
@@ -200,7 +201,7 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Interés
+                <AyudaInformativaComponent data={<InteresComponent/>} title={"El papel del interés en una deuda"} /> Interés
               </div>
             }
           />
