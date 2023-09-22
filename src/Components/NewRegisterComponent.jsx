@@ -7,6 +7,7 @@ import CategoriaAyudaInformativa from "./CategoriaAyudaInformativa";
 import CategoriaIngresosAyudaInformativa from "./CategoriaIngresosAyudaInformativa";
 import MontoAyudaInformativa from "./MontoAyudaInformativa";
 import FechaInicioDeuda from "./FechaInicioDeuda";
+import PlazosComponent from "./PlazosComponent";
 
 import { TextInputField } from "evergreen-ui";
 import { SelectField, option } from "evergreen-ui";
@@ -168,7 +169,7 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Plazos
+                <AyudaInformativaComponent data={<PlazosComponent/>} title={"¿Por qué registrar los plazos?"} /> Plazos
               </div>
             }
           />
@@ -178,7 +179,7 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Monto
+                <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia de registrar el monto"} /> Monto
               </div>
             }
           />
