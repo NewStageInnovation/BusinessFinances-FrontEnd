@@ -8,6 +8,7 @@ import CategoriaIngresosAyudaInformativa from "./CategoriaIngresosAyudaInformati
 import MontoAyudaInformativa from "./MontoAyudaInformativa";
 import FechaInicioDeuda from "./FechaInicioDeuda";
 import PlazosComponent from "./PlazosComponent";
+import EntidadComponent from "./EntidadComponent";
 
 import { TextInputField } from "evergreen-ui";
 import { SelectField, option } from "evergreen-ui";
@@ -189,7 +190,7 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent /> Entidad
+                <AyudaInformativaComponent data={<EntidadComponent/>} title={"La entidad en registros financieros"} /> Entidad
               </div>
             }
           />
