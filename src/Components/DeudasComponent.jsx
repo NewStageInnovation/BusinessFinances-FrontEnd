@@ -69,7 +69,7 @@ function DeudasComponent(props) {
           ) : (
             <Fragment>
               <div className="add-button" onClick={handleAñadirButton}>
-                Añadir Ingreso
+                Añadir Deuda
               </div>
             </Fragment>
           )}
