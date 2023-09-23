@@ -3,6 +3,7 @@ import ResumenGeneralStyle from "../Styles/ResumenGeneral.css";
 import TableDataComponent from "./TableDataComponent";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import PatrimonioNetoComponent from "./PatrimonioNetoComponent";
+import RazonEndeudamiento from "./RazonEndeudamiento";
 import ApalancamientoComponent from "./ApalancamientoComponent";
 import { Table } from "evergreen-ui";
 
@@ -63,7 +64,7 @@ function ResumenGeneral() {
               <Table.Row>
                 <Table.TextCell>
                   <div className="resumen-table-title">
-                    <AyudaInformativaComponent /> Razón Endeudamiento:
+                    <AyudaInformativaComponent data={<RazonEndeudamiento/>} title={"¿Qué tanto de lo que tengo realmente poseo?"} /> Razón Endeudamiento:
                   </div>
                 </Table.TextCell>
                 <Table.TextCell>2000</Table.TextCell>
