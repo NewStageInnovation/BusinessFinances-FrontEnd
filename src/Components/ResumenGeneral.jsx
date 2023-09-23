@@ -5,6 +5,7 @@ import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import PatrimonioNetoComponent from "./PatrimonioNetoComponent";
 import RazonEndeudamiento from "./RazonEndeudamiento";
 import ApalancamientoComponent from "./ApalancamientoComponent";
+import MargenCapital from "./MargenCapital";
 import { Table } from "evergreen-ui";
 
 function ResumenGeneral() {
@@ -59,7 +60,7 @@ function ResumenGeneral() {
                     <AyudaInformativaComponent data={<PatrimonioNetoComponent/>} title={"Patrimonio Neto"} /> Patrimonio Neto:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>2000</Table.TextCell>
+                <Table.TextCell>1.20</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>
@@ -67,7 +68,7 @@ function ResumenGeneral() {
                     <AyudaInformativaComponent data={<RazonEndeudamiento/>} title={"¿Qué tanto de lo que tengo realmente poseo?"} /> Razón Endeudamiento:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>2000</Table.TextCell>
+                <Table.TextCell>30%</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>
@@ -80,10 +81,10 @@ function ResumenGeneral() {
               <Table.Row>
                 <Table.TextCell>
                   <div className="resumen-table-title">
-                    <AyudaInformativaComponent /> Margen de Capital:
+                    <AyudaInformativaComponent data={<MargenCapital/>} title={"¿Cuánto estoy re-invirtiendo?"} /> Margen de Capital:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>2000</Table.TextCell>
+                <Table.TextCell>25%</Table.TextCell>
               </Table.Row>
             </Table.Body>
           </Table>
