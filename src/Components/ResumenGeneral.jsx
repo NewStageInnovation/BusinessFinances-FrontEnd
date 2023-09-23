@@ -3,6 +3,7 @@ import ResumenGeneralStyle from "../Styles/ResumenGeneral.css";
 import TableDataComponent from "./TableDataComponent";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
 import PatrimonioNetoComponent from "./PatrimonioNetoComponent";
+import ApalancamientoComponent from "./ApalancamientoComponent";
 import { Table } from "evergreen-ui";
 
 function ResumenGeneral() {
@@ -70,10 +71,10 @@ function ResumenGeneral() {
               <Table.Row>
                 <Table.TextCell>
                   <div className="resumen-table-title">
-                    <AyudaInformativaComponent /> Apalancamiento Financiero:
+                    <AyudaInformativaComponent data={<ApalancamientoComponent/>} title={"La importancia de la deuda en la empresa"} /> Apalancamiento Financiero:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>2000</Table.TextCell>
+                <Table.TextCell>45%</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>
