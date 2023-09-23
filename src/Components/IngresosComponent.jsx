@@ -5,7 +5,32 @@ import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
 
 function IngresosComponent(props) {
-  const { data } = props;
+  const data  = props.data.lenght > 0 ? props.data : [
+    {
+      fecha: "13/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "13/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "04/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+    {
+      fecha: "04/09/2023",
+      concepto: "Pago de empleados",
+      categoria: "Activo",
+      monto: 1000,
+    },
+  ];
 
   const [añadirFlag, setAñadirFlag] = useState(false);
 

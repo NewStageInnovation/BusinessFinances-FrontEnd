@@ -5,7 +5,36 @@ import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
 
 function DeudasComponent(props) {
-  const { data } = props;
+  const data  = props.data.lenght > 0 ? props.data : [
+    {
+      "fecha inicio": "13/09/2023",
+      plazos: 12,
+      entidad: "Banco",
+      monto: 1000,
+      "interes mensual": "5%",
+    },
+    {
+      "fecha inicio": "13/09/2023",
+      plazos: 12,
+      entidad: "Banco",
+      monto: 1000,
+      "interes mensual": "5%",
+    },
+    {
+      "fecha inicio": "13/09/2023",
+      plazos: 12,
+      entidad: "Banco",
+      monto: 1000,
+      "interes mensual": "5%",
+    },
+    {
+      "fecha inicio": "13/09/2023",
+      plazos: 12,
+      entidad: "Banco",
+      monto: 1000,
+      "interes mensual": "5%",
+    },
+  ];
 
   const [añadirFlag, setAñadirFlag] = useState(false);
 
