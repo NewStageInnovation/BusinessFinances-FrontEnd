@@ -1,34 +1,44 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import EmptyDataComponent from "./EmptyDataComponent";
 import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
+import { ContextoMainProvider } from "../Pages/FormPage";
+import { addIngreso } from "../services/user";
 
 function IngresosComponent(props) {
+  const [nuevoIngreso, setNuevoIngreso] = useState({
+    fecha: "",
+    concepto: "",
+    categoria: "",
+    cantidad: 0,
+  });
+  const { user } = useContext(ContextoMainProvider);
+
   const data  = props.data.lenght > 0 ? props.data : [
     {
       fecha: "13/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "13/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "04/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "04/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
   ];
 
@@ -44,8 +54,7 @@ function IngresosComponent(props) {
   };
 
   const handleSaveButton = () => {
-    console.log("Guardando...");
-    // TODO: Implementar el envio del formulario
+    addIngreso(nuevoIngreso, user.correo);
     setAñadirFlag(false);
   };
 
@@ -56,7 +65,7 @@ function IngresosComponent(props) {
           <TableDataComponent data={data} />
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"ingresos"} />
+              <NewRegisterComponent type={"ingresos"} setData={setNuevoIngreso} data={nuevoIngreso} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}

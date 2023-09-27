@@ -20,7 +20,20 @@ export async function addGasto(gasto, correo) {
       gasto: gasto,
     })
     .then((response) => {
-      return response.data.user;
+      return response.data.gastos;
     });
   return response;
 }
+
+export async function addIngreso(ingreso, correo) {
+  const response = await axios
+    .post(`${API_BASE_URL}/user/addIngreso/${correo}`, {
+      ingreso: ingreso,
+    })
+    .then((response) => {
+      return response.data.ingresos;
+    });
+  return response;
+}
+
+
