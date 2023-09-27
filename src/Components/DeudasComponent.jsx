@@ -1,10 +1,23 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import EmptyDataComponent from "./EmptyDataComponent";
 import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
+import { ContextoMainProvider } from "../Pages/FormPage";
+import { addDeuda } from "../services/user";
+
 
 function DeudasComponent(props) {
+  const [nuevaDeuda, setNuevaDeuda] = useState({
+    fechaInicio: "",
+    plazos: "",
+    entidad: "",
+    monto: 0,
+    interes: 0,
+  });
+
+  const { user } = useContext(ContextoMainProvider);
+
   const data  = props.data.lenght > 0 ? props.data : [
     {
       "fecha inicio": "13/09/2023",
@@ -48,8 +61,7 @@ function DeudasComponent(props) {
   };
 
   const handleSaveButton = () => {
-    console.log("Guardando...");
-    // TODO: Implementar el envio del formulario
+    addDeuda(nuevaDeuda, user.correo);
     setAñadirFlag(false);
   };
 
@@ -60,7 +72,7 @@ function DeudasComponent(props) {
           <TableDataComponent data={data} />
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"deudas"} />
+              <NewRegisterComponent type={"deudas"} setData={setNuevaDeuda} data={nuevaDeuda} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}

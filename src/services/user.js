@@ -36,4 +36,15 @@ export async function addIngreso(ingreso, correo) {
   return response;
 }
 
+export async function addDeuda(deuda, correo){
+    const response = await axios
+    .post(`${API_BASE_URL}/user/addDeuda/${correo}`, {
+        deuda: deuda,
+    })
+    .then((response) => {
+        return response.data.deudas;
+    });
+    return response;
+}
+
 

@@ -189,7 +189,7 @@ function NewRegisterComponent(props) {
               </div>
             }
             onChange={(e) => {
-              setData({ ...data, fecha: e.target.value });
+              setData({ ...data, fechaInicio: e.target.value });
             }}
           />
           <TextInputField
