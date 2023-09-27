@@ -15,7 +15,7 @@ import { TextInputField } from "evergreen-ui";
 import { SelectField, option } from "evergreen-ui";
 
 function NewRegisterComponent(props) {
-  const { type, handleCancelButton, handleSaveButton } = props;
+  const { type, setData, data} = props;
   let component = <Fragment></Fragment>;
   switch (type) {
     case "gastos":
@@ -34,6 +34,9 @@ function NewRegisterComponent(props) {
                 Fecha
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, fecha: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -48,6 +51,9 @@ function NewRegisterComponent(props) {
                 Concepto
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, concepto: e.target.value });
+            }}
           />
           <SelectField
             isInvalid={false}
@@ -61,6 +67,9 @@ function NewRegisterComponent(props) {
                 Categoría
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, categoria: e.target.value });
+            }}
             width={"150px"}
           >
             <option value="activo" selected>
@@ -76,11 +85,14 @@ function NewRegisterComponent(props) {
                 {" "}
                 <AyudaInformativaComponent
                   data={<MontoAyudaInformativa />}
-                  title={"Importancia del registro de monto"}
+                  title={"Importancia del registro de cantidad"}
                 />{" "}
-                Monto
+                Cantidad
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, cantidad: e.target.value });
+            }}
           />
         </Fragment>
       );
@@ -101,6 +113,9 @@ function NewRegisterComponent(props) {
                 Fecha
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, fecha: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -115,6 +130,9 @@ function NewRegisterComponent(props) {
                 Concepto
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, concepto: e.target.value });
+            }}
           />
           <SelectField
             isInvalid={false}
@@ -128,6 +146,9 @@ function NewRegisterComponent(props) {
                 Categoría
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, categoria: e.target.value });
+            }}
             width={"150px"}
           >
             <option value="activo" selected>
@@ -143,11 +164,14 @@ function NewRegisterComponent(props) {
                 {" "}
                 <AyudaInformativaComponent
                   data={<MontoAyudaInformativa />}
-                  title={"Importancia del registro de monto"}
+                  title={"Importancia del registro de cantidad"}
                 />{" "}
-                Monto
+                Cantidad
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, cantidad: e.target.value });
+            }}
           />
         </Fragment>
       );
@@ -164,6 +188,9 @@ function NewRegisterComponent(props) {
                 <AyudaInformativaComponent data={<FechaInicioDeuda/>} title={"Importancia de la fecha de inicio"} /> Fecha inicio
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, fecha: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -174,6 +201,9 @@ function NewRegisterComponent(props) {
                 <AyudaInformativaComponent data={<PlazosComponent/>} title={"¿Por qué registrar los plazos?"} /> Plazos
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, plazos: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -181,9 +211,12 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia de registrar el monto"} /> Monto
+                <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia de registrar el cantidad"} /> Cantidad
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, cantidad: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -194,6 +227,9 @@ function NewRegisterComponent(props) {
                 <AyudaInformativaComponent data={<EntidadComponent/>} title={"La entidad en registros financieros"} /> Entidad
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, entidad: e.target.value });
+            }}
           />
           <TextInputField
             isInvalid={false}
@@ -204,6 +240,9 @@ function NewRegisterComponent(props) {
                 <AyudaInformativaComponent data={<InteresComponent/>} title={"El papel del interés en una deuda"} /> Interés
               </div>
             }
+            onChange={(e) => {
+              setData({ ...data, interes: e.target.value });
+            }}
           />
         </Fragment>
       );

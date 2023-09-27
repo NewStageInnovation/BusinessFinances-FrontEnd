@@ -1,38 +1,48 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import EmptyDataComponent from "./EmptyDataComponent";
 import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
+import { addGasto } from "../services/user";
+
+import { ContextoMainProvider } from "../Pages/FormPage";
 
 function GastosComponents(props) {
+  const [añadirFlag, setAñadirFlag] = useState(false);
+  const [nuevoGasto, setNuevoGasto] = useState({
+    fecha: "",
+    concepto: "",
+    categoria: "",
+    cantidad: 0,
+  });
+  const { user } = useContext(ContextoMainProvider);
+
   const data  = props.data.lenght > 0 ? props.data : [
     {
       fecha: "13/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "13/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "04/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
     {
       fecha: "04/09/2023",
       concepto: "Pago de empleados",
       categoria: "Activo",
-      monto: 1000,
+      cantidad: 1000,
     },
   ];
-
-  const [añadirFlag, setAñadirFlag] = useState(false);
 
   const handleAñadirButton = () => {
     setAñadirFlag(true);
@@ -44,8 +54,7 @@ function GastosComponents(props) {
   };
 
   const handleSaveButton = () => {
-    console.log("Guardando...");
-    // TODO: Implementar el envio del formulario
+    addGasto(nuevoGasto, user.correo);
     setAñadirFlag(false);
   };
 
@@ -56,7 +65,7 @@ function GastosComponents(props) {
           <TableDataComponent data={data} />
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"gastos"} />
+              <NewRegisterComponent type={"gastos"} setData={setNuevoGasto} data={nuevoGasto} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}
