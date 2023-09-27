@@ -1,23 +1,15 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, createContext, useContext } from "react";
 import TabComponent from "../Components/TabComponent";
 import GastosComponents from "../Components/GastosComponents";
 import IngresosComponent from "../Components/IngresosComponent";
 import DeudasComponent from "../Components/DeudasComponent";
 import ResumenGeneral from "../Components/ResumenGeneral";
-import { getUser } from "../services/user";
+
+// Contexto
+import MainProvider from "../Context/MainProvider";
+export const ContextoMainProvider = createContext();
 
 function FormPage(props) {
-  const [user, setUser] = useState();
-
-  const getUserData = async () => {
-    const user = await getUser();
-    setUser(user);
-  }
-
-  useEffect(() => {
-    getUserData();
-  }, []);
-
   const tabs = [
     {
       name: "Gastos",
@@ -39,7 +31,9 @@ function FormPage(props) {
 
   return (
     <Fragment>
-      <TabComponent tabs={tabs} />
+      <MainProvider>
+        <TabComponent tabs={tabs} />
+      </MainProvider>
     </Fragment>
   );
 }

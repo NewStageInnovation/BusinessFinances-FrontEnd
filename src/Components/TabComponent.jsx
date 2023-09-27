@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TabComponentStyle from "../Styles/TabComponent.css";
-
 import { Pane, Tablist, Tab } from "evergreen-ui";
+
+import { ContextoMainProvider } from "../Pages/FormPage";
 
 function TabComponent(props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const { user } = useContext(ContextoMainProvider);
+
   const tabs = props.tabs
     ? props.tabs
     : [
@@ -18,6 +21,8 @@ function TabComponent(props) {
         },
       ];
 
+
+      
   return (
     <div className="tab-component-container">
       <Pane height={"auto"}>
