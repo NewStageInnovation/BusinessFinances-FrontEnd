@@ -47,4 +47,14 @@ export async function addDeuda(deuda, correo){
     return response;
 }
 
+export async function getGastos(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getGastos/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.gastos;
+    });
+    return response;
+}
+
 

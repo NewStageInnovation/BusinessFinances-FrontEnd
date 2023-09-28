@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useEffect } from "react";
 import EmptyDataComponent from "./EmptyDataComponent";
 import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
@@ -8,6 +8,8 @@ import { addGasto } from "../services/user";
 import { ContextoMainProvider } from "../Pages/FormPage";
 
 function GastosComponents(props) {
+  const { gastos, addNewGasto} = useContext(ContextoMainProvider);
+
   const [añadirFlag, setAñadirFlag] = useState(false);
   const [nuevoGasto, setNuevoGasto] = useState({
     fecha: "",
@@ -15,34 +17,6 @@ function GastosComponents(props) {
     categoria: "",
     cantidad: 0,
   });
-  const { user } = useContext(ContextoMainProvider);
-
-  const data  = props.data.lenght > 0 ? props.data : [
-    {
-      fecha: "13/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "13/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "04/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "04/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-  ];
 
   const handleAñadirButton = () => {
     setAñadirFlag(true);
@@ -54,15 +28,15 @@ function GastosComponents(props) {
   };
 
   const handleSaveButton = () => {
-    addGasto(nuevoGasto, user.correo);
+    addNewGasto(nuevoGasto);
     setAñadirFlag(false);
   };
 
   return (
     <Fragment>
-      {data.length > 0 ? (
+      {gastos.length > 0 ? (
         <Fragment>
-          <TableDataComponent data={data} />
+          <TableDataComponent data={gastos} />
           {añadirFlag ? (
             <Fragment>
               <NewRegisterComponent type={"gastos"} setData={setNuevoGasto} data={nuevoGasto} />
@@ -83,7 +57,7 @@ function GastosComponents(props) {
         <Fragment>
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"gastos"} />
+              <NewRegisterComponent type={"gastos"} setData={setNuevoGasto} data={nuevoGasto} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}

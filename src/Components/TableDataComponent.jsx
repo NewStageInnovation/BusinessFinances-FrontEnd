@@ -12,9 +12,12 @@ function TableDataComponent(props) {
       <Table>
         <Table.Head>
           {data.length > 0 &&
-            Object.keys(data[0]).map((key, index) => (
-              <Table.TextHeaderCell key={index}>{key}</Table.TextHeaderCell>
-            ))}
+            Object.keys(data[0]).map((key, index) => {
+              if (key !== "id" && key !== "_id"){
+                return <Table.TextHeaderCell key={index}>{key}</Table.TextHeaderCell>
+              }
+            }
+            )}
           {editButton && (
             <Table.TextHeaderCell
               flexBasis={50}
@@ -26,9 +29,13 @@ function TableDataComponent(props) {
         <Table.Body height={240}>
           {data.map((data, index) => (
             <Table.Row key={index}>
-              {Object.values(data).map((value, index) => (
-                <Table.TextCell key={index}>{value}</Table.TextCell>
-              ))}
+              {Object.keys(data).map((key, index) => {
+                const value = data[key]
+                if (key !== "id" && key !== "_id"){
+                  return <Table.TextCell key={index}>{value}</Table.TextCell>
+                }
+              }
+              )}
               {editButton && (
                 <Table.TextCell flexBasis={50} flexShrink={0} flexGrow={0}>
                   <div
