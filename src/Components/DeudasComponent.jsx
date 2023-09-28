@@ -4,50 +4,18 @@ import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
 import { ContextoMainProvider } from "../Pages/FormPage";
-import { addDeuda } from "../services/user";
 
 
 function DeudasComponent(props) {
   const [nuevaDeuda, setNuevaDeuda] = useState({
     fechaInicio: "",
     plazos: "",
-    entidad: "",
     monto: 0,
+    entidad: "",
     interes: 0,
   });
 
-  const { user } = useContext(ContextoMainProvider);
-
-  const data  = props.data.lenght > 0 ? props.data : [
-    {
-      "fecha inicio": "13/09/2023",
-      plazos: 12,
-      entidad: "Banco",
-      monto: 1000,
-      "interes mensual": "5%",
-    },
-    {
-      "fecha inicio": "13/09/2023",
-      plazos: 12,
-      entidad: "Banco",
-      monto: 1000,
-      "interes mensual": "5%",
-    },
-    {
-      "fecha inicio": "13/09/2023",
-      plazos: 12,
-      entidad: "Banco",
-      monto: 1000,
-      "interes mensual": "5%",
-    },
-    {
-      "fecha inicio": "13/09/2023",
-      plazos: 12,
-      entidad: "Banco",
-      monto: 1000,
-      "interes mensual": "5%",
-    },
-  ];
+  const { deudas, addNewDeuda } = useContext(ContextoMainProvider);
 
   const [añadirFlag, setAñadirFlag] = useState(false);
 
@@ -61,15 +29,15 @@ function DeudasComponent(props) {
   };
 
   const handleSaveButton = () => {
-    addDeuda(nuevaDeuda, user.correo);
+    addNewDeuda(nuevaDeuda);
     setAñadirFlag(false);
   };
 
   return (
     <Fragment>
-      {data.length > 0 ? (
+      {deudas.length > 0 ? (
         <Fragment>
-          <TableDataComponent data={data} />
+          <TableDataComponent data={deudas} />
           {añadirFlag ? (
             <Fragment>
               <NewRegisterComponent type={"deudas"} setData={setNuevaDeuda} data={nuevaDeuda} />
@@ -90,7 +58,7 @@ function DeudasComponent(props) {
         <Fragment>
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"deudas"} />
+              <NewRegisterComponent type={"deudas"} setData={setNuevaDeuda} data={nuevaDeuda} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}

@@ -211,11 +211,11 @@ function NewRegisterComponent(props) {
             label={
               <div className="new-register-title">
                 {" "}
-                <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia de registrar el cantidad"} /> Cantidad
+                <AyudaInformativaComponent data={<MontoAyudaInformativa/>} title={"Importancia de registrar el monto"} /> Monto
               </div>
             }
             onChange={(e) => {
-              setData({ ...data, cantidad: e.target.value });
+              setData({ ...data, monto: e.target.value });
             }}
           />
           <TextInputField

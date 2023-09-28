@@ -55,7 +55,7 @@ function IngresosComponent(props) {
         <Fragment>
           {añadirFlag ? (
             <Fragment>
-              <NewRegisterComponent type={"ingresos"} />
+              <NewRegisterComponent type={"ingresos"} setData={setNuevoIngreso} data={nuevoIngreso} />
               <NewRegisterButtons
                 handleCancelButton={handleCancelButton}
                 handleSaveButton={handleSaveButton}

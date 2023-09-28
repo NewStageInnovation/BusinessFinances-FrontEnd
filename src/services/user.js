@@ -67,3 +67,12 @@ export async function getIngresos(correo){
     return response;
 }
 
+export async function getDeudas(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getDeudas/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.deudas;
+    });
+    return response;
+}

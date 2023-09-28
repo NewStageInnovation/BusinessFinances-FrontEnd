@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { getUser, getGastos, addGasto, getIngresos, addIngreso } from "../services/user";
+import {
+  getUser,
+  getGastos,
+  addGasto,
+  getIngresos,
+  addIngreso,
+  addDeuda,
+  getDeudas,
+} from "../services/user";
 
 // Contexto
 import { ContextoMainProvider } from "../Pages/FormPage";
@@ -8,6 +16,7 @@ function MainProvider({ children }) {
   const [user, setUser] = useState();
   const [gastos, setGastos] = useState([]);
   const [ingresos, setIngresos] = useState([]);
+  const [deudas, setDeudas] = useState([]);
 
   const getUserData = async () => {
     const user = await getUser();
@@ -30,6 +39,14 @@ function MainProvider({ children }) {
     setIngresos(ingresos);
   };
 
+  const fetchDeudas = async () => {
+    const deudas = await getDeudas(user.correo);
+    deudas.forEach((deuda) => {
+      deuda.fechaInicio = new Date(deuda.fechaInicio).toLocaleDateString();
+    });
+    setDeudas(deudas);
+  };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -38,6 +55,7 @@ function MainProvider({ children }) {
     if (user) {
       fetchGastos();
       fetchIngresos();
+      fetchDeudas();
     }
   }, [user]);
 
@@ -51,11 +69,25 @@ function MainProvider({ children }) {
     addIngreso(ingreso, user.correo);
     ingreso.fecha = new Date(ingreso.fecha).toLocaleDateString();
     setIngresos([...ingresos, ingreso]);
-  }
+  };
+
+  const addNewDeuda = (deuda) => {
+    addDeuda(deuda, user.correo);
+    deuda.fechaInicio = new Date(deuda.fechaInicio).toLocaleDateString();
+    setDeudas([...deudas, deuda]);
+  };
 
   return (
     <ContextoMainProvider.Provider
-      value={{ user: user, gastos: gastos, addNewGasto: addNewGasto, ingresos: ingresos, addNewIngreso: addNewIngreso}}
+      value={{
+        user: user,
+        gastos: gastos,
+        addNewGasto: addNewGasto,
+        ingresos: ingresos,
+        addNewIngreso: addNewIngreso,
+        deudas: deudas,
+        addNewDeuda: addNewDeuda,
+      }}
     >
       {children}
     </ContextoMainProvider.Provider>
