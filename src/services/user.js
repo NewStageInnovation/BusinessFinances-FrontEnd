@@ -57,4 +57,13 @@ export async function getGastos(correo){
     return response;
 }
 
+export async function getIngresos(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getIngresos/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.ingresos;
+    });
+    return response;
+}
 

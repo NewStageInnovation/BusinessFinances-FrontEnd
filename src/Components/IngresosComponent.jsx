@@ -4,7 +4,6 @@ import TableDataComponent from "./TableDataComponent";
 import NewRegisterComponent from "./NewRegisterComponent";
 import NewRegisterButtons from "./NewRegisterButtons";
 import { ContextoMainProvider } from "../Pages/FormPage";
-import { addIngreso } from "../services/user";
 
 function IngresosComponent(props) {
   const [nuevoIngreso, setNuevoIngreso] = useState({
@@ -13,34 +12,7 @@ function IngresosComponent(props) {
     categoria: "",
     cantidad: 0,
   });
-  const { user } = useContext(ContextoMainProvider);
-
-  const data  = props.data.lenght > 0 ? props.data : [
-    {
-      fecha: "13/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "13/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "04/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-    {
-      fecha: "04/09/2023",
-      concepto: "Pago de empleados",
-      categoria: "Activo",
-      cantidad: 1000,
-    },
-  ];
+  const { ingresos, addNewIngreso } = useContext(ContextoMainProvider);
 
   const [añadirFlag, setAñadirFlag] = useState(false);
 
@@ -54,15 +26,15 @@ function IngresosComponent(props) {
   };
 
   const handleSaveButton = () => {
-    addIngreso(nuevoIngreso, user.correo);
+    addNewIngreso(nuevoIngreso);
     setAñadirFlag(false);
   };
 
   return (
     <Fragment>
-      {data.length > 0 ? (
+      {ingresos.length > 0 ? (
         <Fragment>
-          <TableDataComponent data={data} />
+          <TableDataComponent data={ingresos} />
           {añadirFlag ? (
             <Fragment>
               <NewRegisterComponent type={"ingresos"} setData={setNuevoIngreso} data={nuevoIngreso} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUser, getGastos, addGasto } from "../services/user";
+import { getUser, getGastos, addGasto, getIngresos, addIngreso } from "../services/user";
 
 // Contexto
 import { ContextoMainProvider } from "../Pages/FormPage";
@@ -7,6 +7,7 @@ import { ContextoMainProvider } from "../Pages/FormPage";
 function MainProvider({ children }) {
   const [user, setUser] = useState();
   const [gastos, setGastos] = useState([]);
+  const [ingresos, setIngresos] = useState([]);
 
   const getUserData = async () => {
     const user = await getUser();
@@ -21,6 +22,14 @@ function MainProvider({ children }) {
     setGastos(gastos);
   };
 
+  const fetchIngresos = async () => {
+    const ingresos = await getIngresos(user.correo);
+    ingresos.forEach((ingreso) => {
+      ingreso.fecha = new Date(ingreso.fecha).toLocaleDateString();
+    });
+    setIngresos(ingresos);
+  };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -28,6 +37,7 @@ function MainProvider({ children }) {
   useEffect(() => {
     if (user) {
       fetchGastos();
+      fetchIngresos();
     }
   }, [user]);
 
@@ -37,9 +47,15 @@ function MainProvider({ children }) {
     setGastos([...gastos, gasto]);
   };
 
+  const addNewIngreso = (ingreso) => {
+    addIngreso(ingreso, user.correo);
+    ingreso.fecha = new Date(ingreso.fecha).toLocaleDateString();
+    setIngresos([...ingresos, ingreso]);
+  }
+
   return (
     <ContextoMainProvider.Provider
-      value={{ user: user, gastos: gastos, addNewGasto: addNewGasto }}
+      value={{ user: user, gastos: gastos, addNewGasto: addNewGasto, ingresos: ingresos, addNewIngreso: addNewIngreso}}
     >
       {children}
     </ContextoMainProvider.Provider>
