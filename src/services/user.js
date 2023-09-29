@@ -82,3 +82,13 @@ export async function getGastosActivos(correo){
     });
     return response;
 }
+
+export async function getGastosPasivos(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getGastosPasivos/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.gastos;
+    });
+    return response;
+}

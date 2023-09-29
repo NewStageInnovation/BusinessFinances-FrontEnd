@@ -8,6 +8,7 @@ import {
   addDeuda,
   getDeudas,
   getGastosActivos,
+  getGastosPasivos,
 } from "../services/user";
 
 // Contexto
@@ -19,6 +20,7 @@ function MainProvider({ children }) {
   const [ingresos, setIngresos] = useState([]);
   const [deudas, setDeudas] = useState([]);
   const [gastosActivos, setGastosActivos] = useState([]);
+  const [gastosPasivos, setGastosPasivos] = useState([]);
 
   const getUserData = async () => {
     const email = "test_01@google.com";
@@ -59,6 +61,15 @@ function MainProvider({ children }) {
     setGastosActivos(newGastos);
   }
 
+  const fetchGastosPasivos = async () => {
+    const gastosPasivos = await getGastosPasivos(user.correo);
+    const newGastos = [];
+    gastosPasivos.forEach((gasto) => {
+      newGastos.push({concepto: gasto.concepto, cantidad: gasto.cantidad});
+    });
+    setGastosPasivos(newGastos);
+  }
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -69,6 +80,7 @@ function MainProvider({ children }) {
       fetchIngresos();
       fetchDeudas();
       fetchGastosActivos();
+      fetchGastosPasivos();
     }
   }, [user]);
 
@@ -101,6 +113,7 @@ function MainProvider({ children }) {
         deudas: deudas,
         addNewDeuda: addNewDeuda,
         gastosActivos: gastosActivos,
+        gastosPasivos: gastosPasivos,
       }}
     >
       {children}

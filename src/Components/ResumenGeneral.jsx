@@ -11,7 +11,7 @@ import { Table } from "evergreen-ui";
 import { ContextoMainProvider } from "../Pages/FormPage";
 
 function ResumenGeneral() {
-  const { gastosActivos } = useContext(ContextoMainProvider);
+  const { gastosActivos, gastosPasivos } = useContext(ContextoMainProvider);
   const data = [
     {
       Descripcion: "Venta",
@@ -40,7 +40,7 @@ function ResumenGeneral() {
           <div className="resumen-title">
             Pasivos <AyudaInformativaComponent />{" "}
           </div>
-          <TableDataComponent data={data} />
+          <TableDataComponent data={gastosPasivos} />
         </div>
         <div className="resumen-item">
           <div className="resumen-title">
