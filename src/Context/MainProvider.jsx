@@ -9,7 +9,8 @@ import {
   getDeudas,
   getGastosActivos,
   getGastosPasivos,
-  getCapital
+  getCapital,
+  getPatrimonioNeto,
 } from "../services/user";
 
 // Contexto
@@ -23,6 +24,7 @@ function MainProvider({ children }) {
   const [gastosActivos, setGastosActivos] = useState(0);
   const [gastosPasivos, setGastosPasivos] = useState(0);
   const [capital, setCapital] = useState(0);
+  const [patrimonioNeto, setPatrimonioNeto] = useState(0);
 
   const getUserData = async () => {
     const email = "test_01@google.com";
@@ -69,6 +71,11 @@ function MainProvider({ children }) {
     setGastosPasivos(gastosPasivos);
   }
 
+  const fetchPatrimonioNeto = async () => {
+    const patrimonioNeto = await getPatrimonioNeto(user.correo);
+    setPatrimonioNeto(patrimonioNeto);
+  }
+
   const fetchData = async () => {
     await fetchGastos();
     await fetchIngresos();
@@ -76,6 +83,7 @@ function MainProvider({ children }) {
     await fetchGastosActivos();
     await fetchGastosPasivos();
     await fetchCapital();
+    await fetchPatrimonioNeto();
   }
 
   useEffect(() => {
@@ -122,6 +130,7 @@ function MainProvider({ children }) {
         gastosActivos: gastosActivos,
         gastosPasivos: gastosPasivos,
         capital: capital,
+        patrimonioNeto: patrimonioNeto,
       }}
     >
       {children}

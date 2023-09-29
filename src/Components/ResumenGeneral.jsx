@@ -11,7 +11,7 @@ import { Table } from "evergreen-ui";
 import { ContextoMainProvider } from "../Pages/FormPage";
 
 function ResumenGeneral() {
-  const { gastosActivos, gastosPasivos, capital } =
+  const { gastosActivos, gastosPasivos, capital, patrimonioNeto } =
     useContext(ContextoMainProvider);
   return (
     <div className="resumen-general-main-container">
@@ -69,7 +69,7 @@ function ResumenGeneral() {
                     Patrimonio Neto:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>1.20</Table.TextCell>
+                <Table.TextCell>{patrimonioNeto}</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>

@@ -102,3 +102,13 @@ export async function getCapital(correo){
     });
     return response;
 }
+
+export async function getPatrimonioNeto(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getPatrimonioNeto/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.patrimonioNeto;
+    });
+    return response;
+}
