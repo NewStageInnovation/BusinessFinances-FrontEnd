@@ -78,7 +78,7 @@ export async function getGastosActivos(correo){
     .get(`${API_BASE_URL}/user/getGastosActivos/${correo}`, {
     })
     .then((response) => {
-        return response.data.gastos;
+        return response.data.gastosActivos;
     });
     return response;
 }
@@ -88,7 +88,17 @@ export async function getGastosPasivos(correo){
     .get(`${API_BASE_URL}/user/getGastosPasivos/${correo}`, {
     })
     .then((response) => {
-        return response.data.gastos;
+        return response.data.gastosPasivos;
+    });
+    return response;
+}
+
+export async function getCapital(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getCapital/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.capital;
     });
     return response;
 }

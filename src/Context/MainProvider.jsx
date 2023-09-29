@@ -9,6 +9,7 @@ import {
   getDeudas,
   getGastosActivos,
   getGastosPasivos,
+  getCapital
 } from "../services/user";
 
 // Contexto
@@ -19,8 +20,9 @@ function MainProvider({ children }) {
   const [gastos, setGastos] = useState([]);
   const [ingresos, setIngresos] = useState([]);
   const [deudas, setDeudas] = useState([]);
-  const [gastosActivos, setGastosActivos] = useState([]);
-  const [gastosPasivos, setGastosPasivos] = useState([]);
+  const [gastosActivos, setGastosActivos] = useState(0);
+  const [gastosPasivos, setGastosPasivos] = useState(0);
+  const [capital, setCapital] = useState(0);
 
   const getUserData = async () => {
     const email = "test_01@google.com";
@@ -54,20 +56,26 @@ function MainProvider({ children }) {
 
   const fetchGastosActivos = async () => {
     const gastosActivos = await getGastosActivos(user.correo);
-    const newGastos = [];
-    gastosActivos.forEach((gasto) => {
-      newGastos.push({concepto: gasto.concepto, cantidad: gasto.cantidad});
-    });
-    setGastosActivos(newGastos);
+    setGastosActivos(gastosActivos);
+  }
+
+  const fetchCapital = async () => {
+    const capital = await getCapital(user.correo);
+    setCapital(capital);
   }
 
   const fetchGastosPasivos = async () => {
     const gastosPasivos = await getGastosPasivos(user.correo);
-    const newGastos = [];
-    gastosPasivos.forEach((gasto) => {
-      newGastos.push({concepto: gasto.concepto, cantidad: gasto.cantidad});
-    });
-    setGastosPasivos(newGastos);
+    setGastosPasivos(gastosPasivos);
+  }
+
+  const fetchData = async () => {
+    await fetchGastos();
+    await fetchIngresos();
+    await fetchDeudas();
+    await fetchGastosActivos();
+    await fetchGastosPasivos();
+    await fetchCapital();
   }
 
   useEffect(() => {
@@ -76,30 +84,29 @@ function MainProvider({ children }) {
 
   useEffect(() => {
     if (user) {
-      fetchGastos();
-      fetchIngresos();
-      fetchDeudas();
-      fetchGastosActivos();
-      fetchGastosPasivos();
+      fetchData();
     }
   }, [user]);
 
-  const addNewGasto = (gasto) => {
+  const addNewGasto = async (gasto) => {
     addGasto(gasto, user.correo);
     gasto.fecha = new Date(gasto.fecha).toLocaleDateString();
     setGastos([...gastos, gasto]);
+    await fetchData();
   };
 
-  const addNewIngreso = (ingreso) => {
+  const addNewIngreso = async (ingreso) => {
     addIngreso(ingreso, user.correo);
     ingreso.fecha = new Date(ingreso.fecha).toLocaleDateString();
     setIngresos([...ingresos, ingreso]);
+    await fetchData();
   };
 
-  const addNewDeuda = (deuda) => {
+  const addNewDeuda = async (deuda) => {
     addDeuda(deuda, user.correo);
     deuda.fechaInicio = new Date(deuda.fechaInicio).toLocaleDateString();
     setDeudas([...deudas, deuda]);
+    await fetchData();
   };
 
   return (
@@ -114,6 +121,7 @@ function MainProvider({ children }) {
         addNewDeuda: addNewDeuda,
         gastosActivos: gastosActivos,
         gastosPasivos: gastosPasivos,
+        capital: capital,
       }}
     >
       {children}
