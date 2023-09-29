@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ResumenGeneralStyle from "../Styles/ResumenGeneral.css";
 import TableDataComponent from "./TableDataComponent";
 import AyudaInformativaComponent from "./AyudaInformativaComponent";
@@ -8,7 +8,10 @@ import ApalancamientoComponent from "./ApalancamientoComponent";
 import MargenCapital from "./MargenCapital";
 import { Table } from "evergreen-ui";
 
+import { ContextoMainProvider } from "../Pages/FormPage";
+
 function ResumenGeneral() {
+  const { gastosActivos } = useContext(ContextoMainProvider);
   const data = [
     {
       Descripcion: "Venta",
@@ -31,7 +34,7 @@ function ResumenGeneral() {
           <div className="resumen-title">
             Activos <AyudaInformativaComponent />{" "}
           </div>
-          <TableDataComponent data={data} editButton={false} />
+          <TableDataComponent data={gastosActivos} editButton={false} />
         </div>
         <div className="resumen-item">
           <div className="resumen-title">

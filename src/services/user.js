@@ -3,11 +3,7 @@ import axios from "axios";
 
 export async function getUser(email) {
   const response = await axios
-    .post(`${API_BASE_URL}/user/getUser`, {
-      body: {
-        correo: email,
-      },
-    })
+    .get(`${API_BASE_URL}/user/getUser/${email}`, {})
     .then((response) => {
       return response.data.user;
     });
@@ -73,6 +69,16 @@ export async function getDeudas(correo){
     })
     .then((response) => {
         return response.data.deudas;
+    });
+    return response;
+}
+
+export async function getGastosActivos(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getGastosActivos/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.gastos;
     });
     return response;
 }
