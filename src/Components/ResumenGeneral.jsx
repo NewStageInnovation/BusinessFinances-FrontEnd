@@ -10,6 +10,7 @@ import { Table } from "evergreen-ui";
 
 import { ContextoMainProvider } from "../Pages/FormPage";
 import ActivosResumenGeneral from "./ActivosResumenGeneral";
+import CapitalResumenGeneral from "./CapitalResumenGeneral";
 
 function ResumenGeneral() {
   const { gastosActivos, capital, patrimonioNeto } =
@@ -40,8 +41,8 @@ function ResumenGeneral() {
                 <Table.TextCell>
                   <div className="resumen-table-title">
                     <AyudaInformativaComponent
-                      data={<PatrimonioNetoComponent />}
-                      title={"Patrimonio Neto"}
+                      data={<CapitalResumenGeneral />}
+                      title={"¿Qué es el capital?"}
                     />{" "}
                     Capital:
                   </div>
