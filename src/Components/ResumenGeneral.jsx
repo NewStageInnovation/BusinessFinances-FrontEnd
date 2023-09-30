@@ -9,9 +9,10 @@ import MargenCapital from "./MargenCapital";
 import { Table } from "evergreen-ui";
 
 import { ContextoMainProvider } from "../Pages/FormPage";
+import ActivosResumenGeneral from "./ActivosResumenGeneral";
 
 function ResumenGeneral() {
-  const { gastosActivos, gastosPasivos, capital, patrimonioNeto } =
+  const { gastosActivos, capital, patrimonioNeto } =
     useContext(ContextoMainProvider);
   return (
     <div className="resumen-general-main-container">
@@ -27,20 +28,8 @@ function ResumenGeneral() {
                 <Table.TextCell>
                   <div className="resumen-table-title">
                     <AyudaInformativaComponent
-                      data={<PatrimonioNetoComponent />}
-                      title={"Patrimonio Neto"}
-                    />{" "}
-                    Pasivos:
-                  </div>
-                </Table.TextCell>
-                <Table.TextCell>{gastosPasivos}</Table.TextCell>
-              </Table.Row>
-              <Table.Row>
-                <Table.TextCell>
-                  <div className="resumen-table-title">
-                    <AyudaInformativaComponent
-                      data={<PatrimonioNetoComponent />}
-                      title={"Patrimonio Neto"}
+                      data={<ActivosResumenGeneral />}
+                      title={"¿Qué son los gastos en activos?"}
                     />{" "}
                     Activos:
                   </div>
