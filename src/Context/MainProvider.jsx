@@ -11,6 +11,9 @@ import {
   getGastosPasivos,
   getCapital,
   getPatrimonioNeto,
+  getMargenCapital,
+  getRazonEndeudamiento,
+  getApalancamientoFinanciero,
 } from "../services/user";
 
 // Contexto
@@ -25,6 +28,9 @@ function MainProvider({ children }) {
   const [gastosPasivos, setGastosPasivos] = useState(0);
   const [capital, setCapital] = useState(0);
   const [patrimonioNeto, setPatrimonioNeto] = useState(0);
+  const [margenCapital, setMargenCapital] = useState(0);
+  const [razonEndeudamiento, setRazonEndeudamiento] = useState(0);
+  const [apalancamientoFinanciero, setApalancamientoFinanciero] = useState(0);
 
   const getUserData = async () => {
     const email = "test_01@google.com";
@@ -76,6 +82,21 @@ function MainProvider({ children }) {
     setPatrimonioNeto(patrimonioNeto);
   }
 
+  const fetchMargenCapital = async () => {
+    const margenCapital = await getMargenCapital(user.correo);
+    setMargenCapital(margenCapital);
+  }
+
+  const fetchRazonEndeudamiento = async () => {
+    const razonEndeudamiento = await getRazonEndeudamiento(user.correo);
+    setRazonEndeudamiento(razonEndeudamiento);
+  }
+
+  const fetchApalancamientoFinanciero = async () => {
+    const apalancamientoFinanciero = await getApalancamientoFinanciero(user.correo);
+    setApalancamientoFinanciero(apalancamientoFinanciero);
+  }
+
   const fetchData = async () => {
     await fetchGastos();
     await fetchIngresos();
@@ -84,6 +105,9 @@ function MainProvider({ children }) {
     await fetchGastosPasivos();
     await fetchCapital();
     await fetchPatrimonioNeto();
+    await fetchMargenCapital();
+    await fetchRazonEndeudamiento();
+    await fetchApalancamientoFinanciero();
   }
 
   useEffect(() => {
@@ -131,6 +155,9 @@ function MainProvider({ children }) {
         gastosPasivos: gastosPasivos,
         capital: capital,
         patrimonioNeto: patrimonioNeto,
+        margenCapital: margenCapital,
+        razonEndeudamiento: razonEndeudamiento,
+        apalancamientoFinanciero: apalancamientoFinanciero,
       }}
     >
       {children}

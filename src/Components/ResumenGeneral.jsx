@@ -13,7 +13,7 @@ import ActivosResumenGeneral from "./ActivosResumenGeneral";
 import CapitalResumenGeneral from "./CapitalResumenGeneral";
 
 function ResumenGeneral() {
-  const { gastosActivos, capital, patrimonioNeto } =
+  const { gastosActivos, capital, patrimonioNeto, margenCapital, razonEndeudamiento, apalancamientoFinanciero } =
     useContext(ContextoMainProvider);
   return (
     <div className="resumen-general-main-container">
@@ -71,7 +71,7 @@ function ResumenGeneral() {
                     Razón Endeudamiento:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>30%</Table.TextCell>
+                <Table.TextCell>{razonEndeudamiento}%</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>
@@ -83,7 +83,7 @@ function ResumenGeneral() {
                     Apalancamiento Financiero:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>45%</Table.TextCell>
+                <Table.TextCell>{apalancamientoFinanciero}%</Table.TextCell>
               </Table.Row>
               <Table.Row>
                 <Table.TextCell>
@@ -95,7 +95,7 @@ function ResumenGeneral() {
                     Margen de Capital:
                   </div>
                 </Table.TextCell>
-                <Table.TextCell>25%</Table.TextCell>
+                <Table.TextCell>{margenCapital}%</Table.TextCell>
               </Table.Row>
             </Table.Body>
           </Table>

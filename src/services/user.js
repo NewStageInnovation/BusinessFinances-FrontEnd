@@ -112,3 +112,33 @@ export async function getPatrimonioNeto(correo){
     });
     return response;
 }
+
+export async function getMargenCapital(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getMargenCapital/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.margenCapital;
+    });
+    return response;
+}
+
+export async function getRazonEndeudamiento(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getRazonEndeudamiento/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.razonEndeudamiento;
+    });
+    return response;
+}
+
+export async function getApalancamientoFinanciero(correo){
+    const response = await axios
+    .get(`${API_BASE_URL}/user/getApalancamientoFinanciero/${correo}`, {
+    })
+    .then((response) => {
+        return response.data.apalancamientoFinanciero;
+    });
+    return response;
+}
