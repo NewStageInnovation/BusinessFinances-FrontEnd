@@ -1,0 +1,21 @@
+.ayuda-informativa-main-button {
+    font-size: 18px;
+}
+
+.ayuda-informativa-button {
+    cursor: pointer;
+    background: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+.ayuda-informativa-button:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}

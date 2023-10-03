@@ -1,0 +1,33 @@
+.tab-component-container{
+    width: 80vw;
+    text-align: left;
+    margin: auto;
+}
+
+.add-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+    cursor: pointer;
+}

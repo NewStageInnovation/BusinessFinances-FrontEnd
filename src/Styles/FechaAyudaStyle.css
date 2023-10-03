@@ -1,0 +1,11 @@
+.body-ayuda-informativa{
+    text-align: justify;
+}
+
+.body-ayuda-informativa .imagen {
+    width: 100%;
+}
+
+.body-ayuda-informativa li {
+    margin-bottom: 8px;
+}
